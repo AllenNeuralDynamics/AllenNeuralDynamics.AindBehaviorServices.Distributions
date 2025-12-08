@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>AllenNeuralDynamics Behavior Distributions Bonsai library.</Description>
+    <PackageTags>Bonsai Rx AllenNeuralDynamics Behavior Distributions</PackageTags>
+    <TargetFrameworks>net472</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bonsai.Core" Version="2.9.0" />
+  </ItemGroup>
+
+</Project>
