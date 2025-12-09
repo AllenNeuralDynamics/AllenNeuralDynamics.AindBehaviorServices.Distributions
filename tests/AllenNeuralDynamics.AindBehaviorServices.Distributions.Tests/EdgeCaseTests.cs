@@ -1,8 +1,8 @@
 ﻿using System;
 using Xunit;
-using AllenNeuralDynamics.Behavior.Distributions;
+using AllenNeuralDynamics.AindBehaviorServices.Distributions;
 
-namespace AllenNeuralDynamics.Behavior.Distributions.Tests
+namespace AllenNeuralDynamics.AindBehaviorServices.Distributions.Tests
 {
     public class EdgeCaseTests
     {

@@ -2,7 +2,7 @@
 using System.Reactive.Linq;
 using System.Reactive;
 
-namespace AllenNeuralDynamics.Behavior.Distributions
+namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
 {
     /// <summary>
     /// Partial class for MatchDistribution to eager deserialization behavior.

@@ -1,5 +1,5 @@
 # =======================================================================================================================================================================
-# AllenNeuralDynamics.Behavior.Distributions CI/CD
+# AllenNeuralDynamics.AindBehaviorServices.Distributions CI/CD
 # =======================================================================================================================================================================
 # Index:
 # * Build, test, and package .NET
@@ -11,7 +11,7 @@
 # =======================================================================================================================================================================
 # Note that this is a generic workflow meant for all Bonsai packages. Minor local modifications are fine, see https://github.com/bonsai-rx/prefect for more information.
 # =======================================================================================================================================================================
-name: AllenNeuralDynamics.Behavior.Distributions
+name: AllenNeuralDynamics.AindBehaviorServices.Distributions
 on:
   push:
     # This prevents tag pushes from triggering this workflow

@@ -5,7 +5,7 @@
 //----------------------
 
 
-namespace AllenNeuralDynamics.Behavior.Distributions
+namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
 {
     #pragma warning disable // Disable all warnings
 

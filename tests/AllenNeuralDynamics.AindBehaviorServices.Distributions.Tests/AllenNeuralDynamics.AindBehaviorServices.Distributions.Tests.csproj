@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AllenNeuralDynamics.Behavior.Distributions\AllenNeuralDynamics.Behavior.Distributions.csproj" />
+    <ProjectReference Include="..\..\src\AllenNeuralDynamics.AindBehaviorServices.Distributions\AllenNeuralDynamics.AindBehaviorServices.Distributions.csproj" />
   </ItemGroup>
 
 </Project>

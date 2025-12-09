@@ -1,1 +1,1 @@
-# AllenNeuralDynamics.Behavior.Distributions
+# AllenNeuralDynamics.AindBehaviorServices.Distributions

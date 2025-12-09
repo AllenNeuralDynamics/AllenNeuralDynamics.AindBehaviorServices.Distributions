@@ -5,7 +5,7 @@ using System.Reactive.Linq;
 using MathNet.Numerics.Distributions;
 using System.ComponentModel;
 
-namespace AllenNeuralDynamics.Behavior.Distributions
+namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
 {
 
     /// <summary>
