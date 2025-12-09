@@ -2,7 +2,14 @@
   "version": 1,
   "isRoot": true,
   "tools": {
-    "bonsai.sgen": {
+    "docfx": {
+      "version": "2.78.3",
+      "commands": [
+        "docfx"
+      ],
+      "rollForward": false
+    },
+        "bonsai.sgen": {
       "version": "0.7.2",
       "commands": [
         "bonsai.sgen"
