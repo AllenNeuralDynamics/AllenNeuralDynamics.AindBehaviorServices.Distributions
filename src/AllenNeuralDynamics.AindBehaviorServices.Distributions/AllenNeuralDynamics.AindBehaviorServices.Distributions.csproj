@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Description>AllenNeuralDynamics AindBehaviorServices Distributions Bonsai library.</Description>
     <PackageTags>Bonsai Rx AllenNeuralDynamics AindBehaviorServices Distributions</PackageTags>
-    <TargetFrameworks>net472</TargetFrameworks>
+    <TargetFrameworks>net472;net8.0</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>
