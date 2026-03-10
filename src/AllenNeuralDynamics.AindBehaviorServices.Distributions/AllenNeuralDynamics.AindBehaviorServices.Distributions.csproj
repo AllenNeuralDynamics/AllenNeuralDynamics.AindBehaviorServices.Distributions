@@ -12,4 +12,9 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec
+      Command="&#xD;&#xA;          dotnet tool restore&#xD;&#xA;          dotnet tool run bonsai.sgen $(ProjectDir)/distributions.json --namespace AllenNeuralDynamics.AindBehaviorServices.Distributions --serializer json --name Distributions.Generated.cs" />
+  </Target>
+
 </Project>
