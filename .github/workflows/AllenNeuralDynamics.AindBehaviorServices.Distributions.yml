@@ -271,7 +271,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: public-release
     needs: build
-    if: github.event_name == 'release'
+    if: false
     steps:
       # ----------------------------------------------------------------------- Set up .NET
       - name: Setup .NET
