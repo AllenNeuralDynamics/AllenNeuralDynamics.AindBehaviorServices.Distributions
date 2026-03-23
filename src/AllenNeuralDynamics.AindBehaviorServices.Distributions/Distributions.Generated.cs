@@ -15,7 +15,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Continuous distribution bounded between 0 and 1. Commonly used
     ///for modeling probabilities and proportions.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A beta probability distribution.\n\nContinuous distribution bounded between 0 and 1" +
         ". Commonly used\nfor modeling probabilities and proportions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -125,14 +125,12 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by alpha and beta shape parameters.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a beta distribution.\n\nDefined by alpha and beta shape parameters.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class BetaDistributionParameters
+    public partial class BetaDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _alpha;
     
@@ -140,29 +138,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public BetaDistributionParameters()
         {
-            _family = "Beta";
             _alpha = 5D;
             _beta = 5D;
         }
     
-        protected BetaDistributionParameters(BetaDistributionParameters other)
+        protected BetaDistributionParameters(BetaDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _alpha = other._alpha;
             _beta = other._beta;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -209,25 +193,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new BetaDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Alpha = " + _alpha + ", ");
             stringBuilder.Append("Beta = " + _beta);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -238,7 +212,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Models the number of successes in a fixed number of independent
     ///Bernoulli trials with constant success probability.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A binomial probability distribution.\n\nModels the number of successes in a fixed n" +
         "umber of independent\nBernoulli trials with constant success probability.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -348,15 +322,13 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by number of trials (n) and success probability (p).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a binomial distribution.\n\nDefined by number of trials (n) and succ" +
         "ess probability (p).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class BinomialDistributionParameters
+    public partial class BinomialDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private int _n;
     
@@ -364,29 +336,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public BinomialDistributionParameters()
         {
-            _family = "Binomial";
             _n = 1;
             _p = 0.5D;
         }
     
-        protected BinomialDistributionParameters(BinomialDistributionParameters other)
+        protected BinomialDistributionParameters(BinomialDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _n = other._n;
             _p = other._p;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -433,25 +391,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new BinomialDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("N = " + _n + ", ");
             stringBuilder.Append("P = " + _p);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -459,7 +407,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     /// <summary>
     /// Available distributions
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
     [JsonInheritanceAttribute("Beta", typeof(BetaDistribution))]
     [JsonInheritanceAttribute("Scalar", typeof(Scalar))]
@@ -516,12 +464,71 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
 
 
     /// <summary>
+    /// Parameters of the distribution
+    /// </summary>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [Newtonsoft.Json.JsonConverter(typeof(JsonInheritanceConverter), "family")]
+    [JsonInheritanceAttribute("Scalar", typeof(ScalarDistributionParameter))]
+    [JsonInheritanceAttribute("Normal", typeof(NormalDistributionParameters))]
+    [JsonInheritanceAttribute("LogNormal", typeof(LogNormalDistributionParameters))]
+    [JsonInheritanceAttribute("Exponential", typeof(ExponentialDistributionParameters))]
+    [JsonInheritanceAttribute("Uniform", typeof(UniformDistributionParameters))]
+    [JsonInheritanceAttribute("Poisson", typeof(PoissonDistributionParameters))]
+    [JsonInheritanceAttribute("Binomial", typeof(BinomialDistributionParameters))]
+    [JsonInheritanceAttribute("Beta", typeof(BetaDistributionParameters))]
+    [JsonInheritanceAttribute("Gamma", typeof(GammaDistributionParameters))]
+    [JsonInheritanceAttribute("Pdf", typeof(PdfDistributionParameters))]
+    [System.ComponentModel.DescriptionAttribute("Parameters of the distribution")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
+    [Bonsai.CombinatorAttribute(MethodName="Generate")]
+    public partial class DistributionParameters
+    {
+    
+        public DistributionParameters()
+        {
+        }
+    
+        protected DistributionParameters(DistributionParameters other)
+        {
+        }
+    
+        public System.IObservable<DistributionParameters> Generate()
+        {
+            return System.Reactive.Linq.Observable.Defer(() => System.Reactive.Linq.Observable.Return(new DistributionParameters(this)));
+        }
+    
+        public System.IObservable<DistributionParameters> Generate<TSource>(System.IObservable<TSource> source)
+        {
+            return System.Reactive.Linq.Observable.Select(source, _ => new DistributionParameters(this));
+        }
+    
+        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        {
+            return false;
+        }
+    
+        public override string ToString()
+        {
+            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
+            stringBuilder.Append(GetType().Name);
+            stringBuilder.Append(" { ");
+            if (PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(" ");
+            }
+            stringBuilder.Append("}");
+            return stringBuilder.ToString();
+        }
+    }
+
+
+    /// <summary>
     /// An exponential probability distribution.
     ///
     ///Models time between events in a Poisson process. Commonly used
     ///for wait times and inter-event intervals.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("An exponential probability distribution.\n\nModels time between events in a Poisson" +
         " process. Commonly used\nfor wait times and inter-event intervals.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -631,41 +638,25 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by the rate parameter (inverse of mean).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for an exponential distribution.\n\nDefined by the rate parameter (inver" +
         "se of mean).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class ExponentialDistributionParameters
+    public partial class ExponentialDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _rate;
     
         public ExponentialDistributionParameters()
         {
-            _family = "Exponential";
             _rate = 0D;
         }
     
-        protected ExponentialDistributionParameters(ExponentialDistributionParameters other)
+        protected ExponentialDistributionParameters(ExponentialDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _rate = other._rate;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -695,24 +686,14 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new ExponentialDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Rate = " + _rate);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -723,7 +704,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Generalizes the exponential distribution. Used for modeling
     ///positive continuous variables with right-skewed distributions.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A gamma probability distribution.\n\nGeneralizes the exponential distribution. Used" +
         " for modeling\npositive continuous variables with right-skewed distributions.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -833,15 +814,13 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by shape (k) and rate (θ⁻¹) parameters.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a gamma distribution.\n\nDefined by shape (k) and rate (θ⁻¹) paramet" +
         "ers.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class GammaDistributionParameters
+    public partial class GammaDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _shape;
     
@@ -849,29 +828,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public GammaDistributionParameters()
         {
-            _family = "Gamma";
             _shape = 1D;
             _rate = 1D;
         }
     
-        protected GammaDistributionParameters(GammaDistributionParameters other)
+        protected GammaDistributionParameters(GammaDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _shape = other._shape;
             _rate = other._rate;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -918,25 +883,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new GammaDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Shape = " + _shape + ", ");
             stringBuilder.Append("Rate = " + _rate);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -947,7 +902,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Distribution where the logarithm of the variable is normally distributed.
     ///Always produces positive values and is right-skewed.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A log-normal probability distribution.\n\nDistribution where the logarithm of the v" +
         "ariable is normally distributed.\nAlways produces positive values and is right-sk" +
         "ewed.")]
@@ -1058,15 +1013,13 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by the mean and standard deviation of the underlying normal distribution.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a log-normal distribution.\n\nDefined by the mean and standard devia" +
         "tion of the underlying normal distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class LogNormalDistributionParameters
+    public partial class LogNormalDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _mean;
     
@@ -1074,29 +1027,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public LogNormalDistributionParameters()
         {
-            _family = "LogNormal";
             _mean = 0D;
             _std = 0D;
         }
     
-        protected LogNormalDistributionParameters(LogNormalDistributionParameters other)
+        protected LogNormalDistributionParameters(LogNormalDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _mean = other._mean;
             _std = other._std;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -1143,25 +1082,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new LogNormalDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Mean = " + _mean + ", ");
             stringBuilder.Append("Std = " + _std);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -1172,7 +1101,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Bell-shaped distribution symmetric around the mean, commonly used
     ///for modeling naturally occurring random variables.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A normal (Gaussian) probability distribution.\n\nBell-shaped distribution symmetric" +
         " around the mean, commonly used\nfor modeling naturally occurring random variable" +
         "s.")]
@@ -1283,15 +1212,13 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by mean (center) and standard deviation (spread).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a normal (Gaussian) distribution.\n\nDefined by mean (center) and st" +
         "andard deviation (spread).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class NormalDistributionParameters
+    public partial class NormalDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _mean;
     
@@ -1299,29 +1226,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public NormalDistributionParameters()
         {
-            _family = "Normal";
             _mean = 0D;
             _std = 0D;
         }
     
-        protected NormalDistributionParameters(NormalDistributionParameters other)
+        protected NormalDistributionParameters(NormalDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _mean = other._mean;
             _std = other._std;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -1368,25 +1281,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new NormalDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Mean = " + _mean + ", ");
             stringBuilder.Append("Std = " + _std);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -1397,7 +1300,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Allows defining arbitrary discrete distributions by specifying
     ///probability values and their corresponding indices.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A custom probability density function distribution.\n\nAllows defining arbitrary di" +
         "screte distributions by specifying\nprobability values and their corresponding in" +
         "dices.")]
@@ -1509,16 +1412,14 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Defined by explicit probability values and their corresponding indices.
     ///Probabilities are automatically normalized to sum to 1.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a custom probability density function distribution.\n\nDefined by ex" +
         "plicit probability values and their corresponding indices.\nProbabilities are aut" +
         "omatically normalized to sum to 1.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class PdfDistributionParameters
+    public partial class PdfDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private System.Collections.Generic.List<double> _pdf;
     
@@ -1526,29 +1427,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public PdfDistributionParameters()
         {
-            _family = "Pdf";
             _pdf = new System.Collections.Generic.List<double>();
             _index = new System.Collections.Generic.List<double>();
         }
     
-        protected PdfDistributionParameters(PdfDistributionParameters other)
+        protected PdfDistributionParameters(PdfDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _pdf = other._pdf;
             _index = other._index;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -1597,25 +1484,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new PdfDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Pdf = " + _pdf + ", ");
             stringBuilder.Append("Index = " + _index);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -1626,7 +1503,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///Models the number of events occurring in a fixed interval of time or space
     ///when events occur independently at a constant rate.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A Poisson probability distribution.\n\nModels the number of events occurring in a f" +
         "ixed interval of time or space\nwhen events occur independently at a constant rat" +
         "e.")]
@@ -1737,41 +1614,25 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by the rate parameter (average number of events).
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a Poisson distribution.\n\nDefined by the rate parameter (average nu" +
         "mber of events).")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class PoissonDistributionParameters
+    public partial class PoissonDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _rate;
     
         public PoissonDistributionParameters()
         {
-            _family = "Poisson";
             _rate = 1D;
         }
     
-        protected PoissonDistributionParameters(PoissonDistributionParameters other)
+        protected PoissonDistributionParameters(PoissonDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _rate = other._rate;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -1801,24 +1662,14 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new PoissonDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Rate = " + _rate);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -1828,7 +1679,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Useful for fixed parameters that don't vary across trials or samples.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A scalar distribution that returns a constant value.\n\nUseful for fixed parameters" +
         " that don\'t vary across trials or samples.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -1938,41 +1789,25 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Represents a deterministic value that always returns the same number.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a scalar (constant) distribution.\n\nRepresents a deterministic valu" +
         "e that always returns the same number.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class ScalarDistributionParameter
+    public partial class ScalarDistributionParameter : DistributionParameters
     {
-    
-        private string _family;
     
         private double _value;
     
         public ScalarDistributionParameter()
         {
-            _family = "Scalar";
             _value = 0D;
         }
     
-        protected ScalarDistributionParameter(ScalarDistributionParameter other)
+        protected ScalarDistributionParameter(ScalarDistributionParameter other) : 
+                base(other)
         {
-            _family = other._family;
             _value = other._value;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -2002,24 +1837,14 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new ScalarDistributionParameter(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Value = " + _value);
             return true;
-        }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
         }
     }
 
@@ -2030,7 +1855,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Applies linear transformation: result = (value * scale) + offset.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for scaling and offsetting sampled distribution values.\nScaling is app" +
         "lied as (value * scale + offset).\n\nApplies linear transformation: result = (valu" +
         "e * scale) + offset.")]
@@ -2132,7 +1957,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///- "clamp": Clamp values to the nearest bound within [min, max].
     ///Used to constrain sampled values within minimum and maximum bounds.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute(@"Parameters for truncating a distribution to a specified range. Truncation should
     be applied after sampling and scaling.
 
@@ -2256,7 +2081,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///All values between min and max have equal probability of being sampled.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("A uniform probability distribution.\n\nAll values between min and max have equal pr" +
         "obability of being sampled.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
@@ -2366,15 +2191,13 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     ///
     ///Defined by minimum and maximum bounds of the distribution.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Parameters for a uniform distribution.\n\nDefined by minimum and maximum bounds of " +
         "the distribution.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Source)]
     [Bonsai.CombinatorAttribute(MethodName="Generate")]
-    public partial class UniformDistributionParameters
+    public partial class UniformDistributionParameters : DistributionParameters
     {
-    
-        private string _family;
     
         private double _min;
     
@@ -2382,29 +2205,15 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     
         public UniformDistributionParameters()
         {
-            _family = "Uniform";
             _min = 0D;
             _max = 0D;
         }
     
-        protected UniformDistributionParameters(UniformDistributionParameters other)
+        protected UniformDistributionParameters(UniformDistributionParameters other) : 
+                base(other)
         {
-            _family = other._family;
             _min = other._min;
             _max = other._max;
-        }
-    
-        [Newtonsoft.Json.JsonPropertyAttribute("family")]
-        public string Family
-        {
-            get
-            {
-                return _family;
-            }
-            set
-            {
-                _family = value;
-            }
         }
     
         /// <summary>
@@ -2451,30 +2260,20 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
             return System.Reactive.Linq.Observable.Select(source, _ => new UniformDistributionParameters(this));
         }
     
-        protected virtual bool PrintMembers(System.Text.StringBuilder stringBuilder)
+        protected override bool PrintMembers(System.Text.StringBuilder stringBuilder)
         {
-            stringBuilder.Append("Family = " + _family + ", ");
+            if (base.PrintMembers(stringBuilder))
+            {
+                stringBuilder.Append(", ");
+            }
             stringBuilder.Append("Min = " + _min + ", ");
             stringBuilder.Append("Max = " + _max);
             return true;
         }
-    
-        public override string ToString()
-        {
-            System.Text.StringBuilder stringBuilder = new System.Text.StringBuilder();
-            stringBuilder.Append(GetType().Name);
-            stringBuilder.Append(" { ");
-            if (PrintMembers(stringBuilder))
-            {
-                stringBuilder.Append(" ");
-            }
-            stringBuilder.Append("}");
-            return stringBuilder.ToString();
-        }
     }
 
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
     public enum TruncationParametersTruncationMode
     {
@@ -2624,7 +2423,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
         }
     }
 
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BetaDistribution>))]
@@ -2673,10 +2472,59 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     }
 
 
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.ComponentModel.DefaultPropertyAttribute("Type")]
+    [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Combinator)]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ScalarDistributionParameter>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<NormalDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<LogNormalDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ExponentialDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<UniformDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<PoissonDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BinomialDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BetaDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GammaDistributionParameters>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<PdfDistributionParameters>))]
+    public partial class MatchDistributionParameters : Bonsai.Expressions.SingleArgumentExpressionBuilder
+    {
+    
+        public Bonsai.Expressions.TypeMapping Type { get; set; }
+
+        public override System.Linq.Expressions.Expression Build(System.Collections.Generic.IEnumerable<System.Linq.Expressions.Expression> arguments)
+        {
+            var typeMapping = Type;
+            var returnType = typeMapping != null ? typeMapping.GetType().GetGenericArguments()[0] : typeof(DistributionParameters);
+            return System.Linq.Expressions.Expression.Call(
+                typeof(MatchDistributionParameters),
+                "Process",
+                new System.Type[] { returnType },
+                System.Linq.Enumerable.Single(arguments));
+        }
+
+    
+        private static System.IObservable<TResult> Process<TResult>(System.IObservable<DistributionParameters> source)
+            where TResult : DistributionParameters
+        {
+            return System.Reactive.Linq.Observable.Create<TResult>(observer =>
+            {
+                var sourceObserver = System.Reactive.Observer.Create<DistributionParameters>(
+                    value =>
+                    {
+                        var match = value as TResult;
+                        if (match != null) observer.OnNext(match);
+                    },
+                    observer.OnError,
+                    observer.OnCompleted);
+                return System.ObservableExtensions.SubscribeSafe(source, sourceObserver);
+            });
+        }
+    }
+
+
     /// <summary>
     /// Serializes a sequence of data model objects into JSON strings.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Serializes a sequence of data model objects into JSON strings.")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
     [Bonsai.CombinatorAttribute()]
@@ -2714,6 +2562,11 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
         public System.IObservable<string> Process(System.IObservable<Distribution> source)
         {
             return Process<Distribution>(source);
+        }
+
+        public System.IObservable<string> Process(System.IObservable<DistributionParameters> source)
+        {
+            return Process<DistributionParameters>(source);
         }
 
         public System.IObservable<string> Process(System.IObservable<ExponentialDistribution> source)
@@ -2811,7 +2664,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     /// <summary>
     /// Deserializes a sequence of JSON strings into data model objects.
     /// </summary>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.7.2.0 (Newtonsoft.Json v13.0.0.0)")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Bonsai.Sgen", "0.8.0.0 (Newtonsoft.Json v13.0.0.0)")]
     [System.ComponentModel.DescriptionAttribute("Deserializes a sequence of JSON strings into data model objects.")]
     [System.ComponentModel.DefaultPropertyAttribute("Type")]
     [Bonsai.WorkflowElementCategoryAttribute(Bonsai.ElementCategory.Transform)]
@@ -2820,6 +2673,7 @@ namespace AllenNeuralDynamics.AindBehaviorServices.Distributions
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BinomialDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<BinomialDistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<Distribution>))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<DistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ExponentialDistribution>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<ExponentialDistributionParameters>))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Bonsai.Expressions.TypeMapping<GammaDistribution>))]
